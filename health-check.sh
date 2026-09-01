@@ -1,6 +1,7 @@
 #!/bin/bash
 set -u
 
+# Handle command-line options
     if [ "$1" = "--help" ]; then
         echo "Usage: ./health-check.sh [computer-name]"
         echo ""
@@ -8,6 +9,7 @@ set -u
         exit 0
     fi
 
+#Set computer name
 computer_name="${1:-$(hostname)}"
 
     if [ -z "$1" ]; then
@@ -16,9 +18,18 @@ computer_name="${1:-$(hostname)}"
 
 overall_status="PASS"
 
+# Check required commands
 check_command() {
     if command -v "$1" > /dev/null 2>&1; then
         echo "$1: available"
+    else
+        echo "$1: NOT FOUND"
+    fi
+}
+
+check_file(){
+    if [ -f "$1" ]; then 
+        echo "$1: file exists"
     else
         echo "$1: NOT FOUND"
     fi
@@ -35,6 +46,7 @@ echo "Home: $HOME"
 echo "Current directory: $(pwd)"
 echo ""
 
+# Check disk usage
 echo "Disk Space:"
 df -h /
 disk_usage=$(df -h / | tail -1 | awk '{print $5}' | tr -d '%')
@@ -54,6 +66,7 @@ echo ""
 echo "IPv4 Addresses:"
 ifconfig | grep "inet "
 
+# Check internet connectivity
 echo ""
 echo "Internet Connectivity:"
 if ping -c 4 1.1.1.1 > /dev/null 2>&1; then
@@ -63,6 +76,7 @@ else
     overall_status="WARNING"
 fi
 
+# Check DNS resolution
 echo ""
 echo "DNS Resolution:"
 if nslookup google.com > /dev/null 2>&1; then
@@ -90,14 +104,22 @@ check_command git
 check_command brew
 
 echo ""
+echo "File Checks:"
+check_file health-check.sh
+check_file README.md
+
+# Display system load
+echo ""
 echo "System Load:"
 uptime
 
+# Display overall status
 echo ""
 echo "================================="
 echo "Overall Status : $overall_status"
 echo "================================="
 
+# Return exit status
 if [ "$overall_status" = "PASS" ]; then
     exit 0
 else
