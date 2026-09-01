@@ -41,6 +41,11 @@ To save the results to a report:
 ./health-check.sh > health-report.txt
 ```
 
+## Exit Codes
+
+- `0` - All health checks passed
+- `1` - One or more health checks need attention
+
 ## Purpose
 
-This project was created as part of myn hands-on IT learning Journey.
+This project was created as part of my hands-on IT learning Journey.

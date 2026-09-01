@@ -96,3 +96,9 @@ echo ""
 echo "================================="
 echo "Overall Status : $overall_status"
 echo "================================="
+
+if [ "$overall_status" = "PASS" ]; then
+    exit 0
+else
+    exit 1
+fi
