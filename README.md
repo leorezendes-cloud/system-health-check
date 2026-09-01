@@ -16,7 +16,7 @@ A beginner Bash script that performs basic system and network diagnostics on mac
 - macOS version
 - System architecture
 
-## Skills Practice
+## Skills Practiced
 
 - Bash scripting
 - macOS Terminal
@@ -25,7 +25,7 @@ A beginner Bash script that performs basic system and network diagnostics on mac
 - Pipes and 'grep'
 - Output redirection
 - Basic networking
-- Git and Github
+- Git and GitHub
 
 ## Usage
 
@@ -33,11 +33,13 @@ Run the script from terminal:
 
 '''bash
 ./health-check.sh
+'''
 
 To save the results to a report:
 
 '''bash
 ./health-check.sh > health-report.txt
+'''
 
 ## Purpose
 
