@@ -31,15 +31,13 @@ A beginner Bash script that performs basic system and network diagnostics on mac
 
 Run the script from terminal:
 
-'''bash
+```bash
 ./health-check.sh
-'''
 
 To save the results to a report:
 
-'''bash
+```bash
 ./health-check.sh > health-report.txt
-'''
 
 ## Purpose
 
