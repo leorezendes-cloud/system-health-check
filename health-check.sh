@@ -1,4 +1,5 @@
 #!/bin/bash
+set -u
 
     if [ "$1" = "--help" ]; then
         echo "Usage: ./health-check.sh [computer-name]"
