@@ -1,5 +1,12 @@
 #!/bin/bash
 
+    if [ "$1" = "--help" ]; then
+        echo "Usage: ./health-check.sh [computer-name]"
+        echo ""
+        echo "Runs basic system and network health checks."
+        exit 0
+    fi
+
 computer_name="${1:-$(hostname)}"
 
     if [ -z "$1" ]; then
