@@ -38,7 +38,8 @@ Run the script from terminal:
 To save the results to a report:
 
 ```bash
-./health-check.sh > health-report.txt ```
+./health-check.sh > health-report.txt
+```
 
 ## Purpose
 
