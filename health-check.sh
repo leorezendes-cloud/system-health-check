@@ -1,6 +1,14 @@
 #!/bin/bash
 set -u
 
+report_mode=false
+
+if [ "$#" -gt 1 ]; then
+    echo "Error: Too many arguments."
+    echo "Use --help for usage information."
+    exit 1
+fi
+
 # Handle command-line options
     case "${1:-}" in
         --help)
@@ -19,6 +27,10 @@ set -u
             echo "Unknown option: $1"
             echo "Use --help for usage information."
             exit 1
+            ;;
+
+        --report)
+            report_mode=true
             ;;
     esac
 
