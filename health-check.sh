@@ -24,6 +24,7 @@ check_command() {
         echo "$1: available"
     else
         echo "$1: NOT FOUND"
+        overall status="WARNING"
     fi
 }
 
@@ -87,21 +88,28 @@ else
 fi
 
 echo ""
-echo "Default Router:"
-route -n get default | grep "gateway:"
+echo "Default Gateway:"
+gateway=$(route -n get default | grep "gateway:" | awk '{print $2}')
+
+if [ -n "$gateway" ]; then
+    echo "Default gateway: $gateway"
+else
+    echo "Default gateway: NOT FOUND"
+    overall_satus="WARNING"
+fi
 
 echo""
 echo "System Information:"
 sw_vers
 echo "Architecture: $(uname -m)"
 
-echo ""
-echo "Required Commands:"
-check_command df
-check_command ping
-check_command nslookup
-check_command git
-check_command brew
+
+commands=(df ping nslookup git brew awk)
+
+for command in "${commands[@]}"
+do
+    check_command "$command"
+done
 
 echo ""
 echo "File Checks:"
