@@ -10,6 +10,11 @@ set -u
             exit 0
             ;;
 
+        --version)
+            echo "System Health Check v1.0"
+            exit 0
+            ;;
+
         --*)
             echo "Unknown option: $1"
             echo "Use --help for usage information."
