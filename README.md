@@ -49,3 +49,7 @@ To save the results to a report:
 ## Purpose
 
 This project was created as part of my hands-on IT learning Journey.
+
+## Branch Practice
+
+This section was added while practicing Git branches.
