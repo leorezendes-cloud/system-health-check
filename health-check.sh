@@ -63,7 +63,7 @@ check_file(){
     fi
 }
 echo "==========================="
-echo "    SYSTEM HEALTH CHECK    "
+echo " SYSTEM HEALTH CHECK v1.0  "
 echo "==========================="
 echo "Time: $(date)"
 echo "Computer : $computer_name"
