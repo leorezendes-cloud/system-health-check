@@ -2,17 +2,25 @@
 set -u
 
 # Handle command-line options
-    if [ "$1" = "--help" ]; then
-        echo "Usage: ./health-check.sh [computer-name]"
-        echo ""
-        echo "Runs basic system and network health checks."
-        exit 0
-    fi
+    case "${1:-}" in
+        --help)
+            echo "Usage: ./health-check.sh [computer-name]"
+            echo ""
+            echo "Runs basic system and network health checks."
+            exit 0
+            ;;
+
+        --*)
+            echo "Unknown option: $1"
+            echo "Use --help for usage information."
+            exit 1
+            ;;
+    esac
 
 #Set computer name
 computer_name="${1:-$(hostname)}"
 
-    if [ -z "$1" ]; then
+    if [ -z "${1:-}" ]; then
         echo "No computer name provided. Using hostname."
     fi
 
