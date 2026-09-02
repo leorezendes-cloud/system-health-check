@@ -20,10 +20,12 @@ overall_status="PASS"
 
 # Check required commands
 check_command() {
-    if command -v "$1" > /dev/null 2>&1; then
-        echo "$1: available"
+    local command_name="$1"
+
+    if command -v "$command_name" > /dev/null 2>&1; then
+        echo "$command_name: available"
     else
-        echo "$1: NOT FOUND"
+        echo "$command_name: NOT FOUND"
         overall status="WARNING"
     fi
 }
