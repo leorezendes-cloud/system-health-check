@@ -48,7 +48,7 @@ To save the results to a report:
 
 ## Purpose
 
-This project was created as part of my hands-on IT learning Journey.
+This project demonstrates practical Linux/macOS command-line, Bash, networking, and Git skills.
 
 ## Branch Practice
 
