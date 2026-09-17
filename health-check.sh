@@ -51,7 +51,7 @@ check_command() {
         echo "$command_name: available"
     else
         echo "$command_name: NOT FOUND"
-        overall status="WARNING"
+        overall_status="WARNING"
     fi
 }
 
@@ -62,6 +62,19 @@ check_file(){
         echo "$1: NOT FOUND"
     fi
 }
+
+check_port(){
+    local host="$1"
+    local port="$2"
+
+    if nc -vz "$host" "$port" &>/dev/null; then
+        echo "TCP Connection to $host:$port: OK"
+    else
+        echo "TCP Connection to $host:$port: FAILED"
+        overall_status="WARNING"
+    fi
+} 
+
 echo "==========================="
 echo " SYSTEM HEALTH CHECK v1.0  "
 echo "==========================="
@@ -142,6 +155,10 @@ echo ""
 echo "File Checks:"
 check_file health-check.sh
 check_file README.md
+
+echo ""
+echo "Port Check:"
+check_port example.com 443
 
 # Display system load
 echo ""
